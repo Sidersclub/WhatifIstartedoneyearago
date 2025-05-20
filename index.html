@@ -16,46 +16,22 @@
     <h1 class="title">Started 365</h1>
     <h2 class="subtitle">Et si j’avais commencé il y a 1 an ?</h2>
 
-    <!-- Animation orbitale identique -->
-    <div class="orbit-container" aria-hidden="true">
-      <!-- Même SVG que dans ton prototype -->
-      <!--  … (copié tel quel pour conserver l’effet) … -->
-      <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <path id="e30" d="M150 150 m-30 0 a30 20 0 1 0 60 0 a30 20 0 1 0 -60 0"/>
-          <path id="e45" d="M150 150 m-45 0 a45 30 0 1 0 90 0 a45 30 0 1 0 -90 0"/>
-          <path id="e60" d="M150 150 m-60 0 a60 40 0 1 0 120 0 a60 40 0 1 0 -120 0"/>
-          <path id="e75" d="M150 150 m-75 0 a75 50 0 1 0 150 0 a75 50 0 1 0 -150 0"/>
-          <path id="e90" d="M150 150 m-90 0 a90 60 0 1 0 180 0 a90 60 0 1 0 -180 0"/>
-        </defs>
-
-        <circle cx="150" cy="150" r="5" fill="#DEBA52"/>
-        <path class="trail" d="M0 0"/> <!-- masqué par CSS -->
-
-        <g fill="white">
-          <circle r="2"><animateMotion dur="4s" repeatCount="indefinite" rotate="auto"><mpath href="#e30"/></animateMotion></circle>
-          <circle r="3"><animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#e45"/></animateMotion></circle>
-          <circle r="4"><animateMotion dur="8s" repeatCount="indefinite" rotate="auto"><mpath href="#e60"/></animateMotion></circle>
-          <circle r="5"><animateMotion dur="10s" repeatCount="indefinite" rotate="auto"><mpath href="#e75"/></animateMotion></circle>
-          <circle r="6"><animateMotion dur="12s" repeatCount="indefinite" rotate="auto"><mpath href="#e90"/></animateMotion></circle>
-        </g>
-      </svg>
-    </div>
+    <!-- —— PLUS D’ANIMATION —→  (on supprime simplement l’élément) -->
 
     <!-- Choix de l’habitude -->
     <div class="habit-select">
-      <label for="habit">Habitude&nbsp;:</label>
+      <label for="habit">Habitude :</label>
       <select id="habit">
-        <option value="money">Économies d’argent&nbsp;(€)</option>
-        <option value="words">Écriture&nbsp;(mots)</option>
-        <option value="pushups">Pompes&nbsp;(reps)</option>
+        <option value="money">Économies d’argent (€)</option>
+        <option value="words">Écriture (mots)</option>
+        <option value="pushups">Pompes (reps)</option>
       </select>
     </div>
 
     <!-- Quantité quotidienne -->
     <div class="daily-slider-container">
       <label class="daily-label" for="daily-slider">
-        Par jour&nbsp;:
+        Par jour :
         <span id="daily-value">5</span>
       </label>
       <input type="range" id="daily-slider" min="1" max="100" value="5" step="1">
@@ -64,7 +40,7 @@
     <!-- Résultats -->
     <div class="result-container">
       <div class="result-item">
-        <label>Total après 365&nbsp;j&nbsp;:</label>
+        <label>Total après 365 j :</label>
         <span id="total-amount">—</span>
       </div>
       <div class="result-item" id="extra-info" style="display:none;"></div>
