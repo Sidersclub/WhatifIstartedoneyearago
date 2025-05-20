@@ -1,80 +1,42 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>What if I started 1 year ago ?</title>
+/* —— Palette & reset —— */
+:root{
+  --accent:#DEBA52; --bg:#000; --fg:#F5F5F5; --fg-dim:#8E8E8E; --border:#555;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Poppins",sans-serif;
+  background:var(--bg); color:var(--fg);
+  padding:20px; letter-spacing:.4px; -webkit-font-smoothing:antialiased;
+}
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+/* —— Conteneur & titres —— */
+.calculator-container{max-width:540px;margin:40px auto;padding:24px 32px;border:1px solid var(--border);border-radius:8px;text-align:center}
+.title{font-size:2rem;font-weight:700;letter-spacing:.08em;margin-bottom:4px;position:relative}
+.title::after{content:"_";color:var(--accent);margin-left:6px;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.subtitle{font-size:.9rem;color:var(--fg-dim);margin:0 0 40px;font-weight:400}
 
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="calculator-container">
-    <h1 class="title">Started 365</h1>
-    <h2 class="subtitle">Et si j’avais commencé il y a 1 an ?</h2>
+/* ———  l’animation et les règles SVG ont disparu ——— */
 
-    <!-- Animation orbitale identique -->
-    <div class="orbit-container" aria-hidden="true">
-      <!-- Même SVG que dans ton prototype -->
-      <!--  … (copié tel quel pour conserver l’effet) … -->
-      <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <path id="e30" d="M150 150 m-30 0 a30 20 0 1 0 60 0 a30 20 0 1 0 -60 0"/>
-          <path id="e45" d="M150 150 m-45 0 a45 30 0 1 0 90 0 a45 30 0 1 0 -90 0"/>
-          <path id="e60" d="M150 150 m-60 0 a60 40 0 1 0 120 0 a60 40 0 1 0 -120 0"/>
-          <path id="e75" d="M150 150 m-75 0 a75 50 0 1 0 150 0 a75 50 0 1 0 -150 0"/>
-          <path id="e90" d="M150 150 m-90 0 a90 60 0 1 0 180 0 a90 60 0 1 0 -180 0"/>
-        </defs>
+/* —— UI —— */
+.habit-select{margin:24px 0 32px;text-align:left}
+.habit-select label{font-weight:700;margin-right:8px}
+.habit-select select{padding:6px 10px;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--fg);font-size:.9rem}
 
-        <circle cx="150" cy="150" r="5" fill="#DEBA52"/>
-        <path class="trail" d="M0 0"/> <!-- masqué par CSS -->
+.daily-slider-container{margin-bottom:28px}
+.daily-label{display:flex;justify-content:space-between;font-weight:700;margin-bottom:12px}
+#daily-slider{-webkit-appearance:none;width:100%;height:6px;background:var(--fg-dim);border-radius:3px;outline:none}
+#daily-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);margin-top:-6px}
+#daily-slider::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
 
-        <g fill="white">
-          <circle r="2"><animateMotion dur="4s" repeatCount="indefinite" rotate="auto"><mpath href="#e30"/></animateMotion></circle>
-          <circle r="3"><animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#e45"/></animateMotion></circle>
-          <circle r="4"><animateMotion dur="8s" repeatCount="indefinite" rotate="auto"><mpath href="#e60"/></animateMotion></circle>
-          <circle r="5"><animateMotion dur="10s" repeatCount="indefinite" rotate="auto"><mpath href="#e75"/></animateMotion></circle>
-          <circle r="6"><animateMotion dur="12s" repeatCount="indefinite" rotate="auto"><mpath href="#e90"/></animateMotion></circle>
-        </g>
-      </svg>
-    </div>
+.result-container{display:flex;flex-direction:column;gap:16px;text-align:left}
+.result-item{display:flex;justify-content:space-between;font-size:.9rem}
+.result-item span{font-weight:700;font-size:1.1rem}
 
-    <!-- Choix de l’habitude -->
-    <div class="habit-select">
-      <label for="habit">Habitude&nbsp;:</label>
-      <select id="habit">
-        <option value="money">Économies d’argent&nbsp;(€)</option>
-        <option value="words">Écriture&nbsp;(mots)</option>
-        <option value="pushups">Pompes&nbsp;(reps)</option>
-      </select>
-    </div>
+/* —— Footer —— */
+.footer{margin-top:8px;text-align:center;font-size:.8rem;color:var(--fg-dim)}
+.footer a{color:var(--accent);text-decoration:none}.footer a:hover{text-decoration:underline}
 
-    <!-- Quantité quotidienne -->
-    <div class="daily-slider-container">
-      <label class="daily-label" for="daily-slider">
-        Par jour&nbsp;:
-        <span id="daily-value">5</span>
-      </label>
-      <input type="range" id="daily-slider" min="1" max="100" value="5" step="1">
-    </div>
-
-    <!-- Résultats -->
-    <div class="result-container">
-      <div class="result-item">
-        <label>Total après 365&nbsp;j&nbsp;:</label>
-        <span id="total-amount">—</span>
-      </div>
-      <div class="result-item" id="extra-info" style="display:none;"></div>
-    </div>
-  </div>
-
-  <p class="footer">One of many side projects from
-    <a href="https://www.linkedin.com/in/tanguyduthion/" target="_blank" rel="noopener noreferrer">
-      <span class="highlight">SidersClub</span></a></p>
-
-  <script src="script.js"></script>
-</body>
-</html>
+/* —— Highlight —— */
+.highlight{position:relative;display:inline-block}
+.highlight::before{content:"";position:absolute;left:-2px;right:-2px;bottom:.1em;height:55%;background:var(--accent);transform:skew(-3deg);z-index:-1}
